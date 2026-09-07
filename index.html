@@ -145,16 +145,106 @@
     </section>
 
     <section id="contact" class="section contact">
-      <div class="container contact-box">
-        <div>
-          <p class="section-kicker">Start Here</p>
-          <h2>What bottleneck is costing your organization time, money, or momentum?</h2>
-          <p>Send us the problem. We’ll start by defining the constraint before recommending technology.</p>
+      <div class="container assessment-wrap">
+        <div class="assessment-intro">
+          <p class="section-kicker">Bottleneck Assessment</p>
+          <h2>What is costing your organization time, money, capacity, or momentum?</h2>
+          <p>
+            Give us the operating context and the constraint you are seeing. BNS Innovation will use this information
+            to frame the bottleneck before recommending technology or process changes.
+          </p>
+          <div class="assessment-notes">
+            <span>For B2B and B2G inquiries</span>
+            <span>No confidential or regulated data</span>
+            <span>Structured for initial discovery</span>
+          </div>
         </div>
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:info@bnsinnovation.com?subject=Bottleneck%20Assessment%20Request">Email BNS Innovation</a>
-          <a class="button secondary" href="https://github.com/TarekAref" target="_blank" rel="noopener noreferrer">View GitHub</a>
-        </div>
+
+        <form id="bottleneck-form" class="assessment-form">
+          <div class="form-grid two-col">
+            <label>
+              Name *
+              <input type="text" name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Work email *
+              <input type="email" name="email" autocomplete="email" required />
+            </label>
+          </div>
+
+          <div class="form-grid two-col">
+            <label>
+              Organization *
+              <input type="text" name="organization" autocomplete="organization" required />
+            </label>
+            <label>
+              Organization type
+              <select name="organization_type">
+                <option value="">Select one</option>
+                <option>Business</option>
+                <option>Government agency</option>
+                <option>Government contractor</option>
+                <option>Nonprofit</option>
+                <option>Other organization</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            Industry or sector
+            <input type="text" name="industry" placeholder="e.g., manufacturing, IT, public sector, logistics" />
+          </label>
+
+          <label>
+            Describe the bottleneck *
+            <textarea name="bottleneck" rows="6" required placeholder="What is happening, where does the process slow down or fail, and whom does it affect?"></textarea>
+          </label>
+
+          <div class="form-grid two-col">
+            <label>
+              Primary impact
+              <select name="impact">
+                <option value="">Select one</option>
+                <option>Time / delay</option>
+                <option>Cost</option>
+                <option>Revenue</option>
+                <option>Security / risk</option>
+                <option>Compliance</option>
+                <option>Quality / errors</option>
+                <option>Customer experience</option>
+                <option>Capacity / scalability</option>
+              </select>
+            </label>
+            <label>
+              Priority
+              <select name="priority">
+                <option value="">Select one</option>
+                <option>Immediate</option>
+                <option>Within 30 days</option>
+                <option>Within 90 days</option>
+                <option>Exploratory</option>
+              </select>
+            </label>
+          </div>
+
+          <label>
+            What have you tried already?
+            <textarea name="attempts" rows="4" placeholder="Existing tools, workarounds, vendors, or internal attempts"></textarea>
+          </label>
+
+          <label>
+            Desired outcome
+            <textarea name="outcome" rows="4" placeholder="What would a successful result look like?"></textarea>
+          </label>
+
+          <label class="consent-row">
+            <input type="checkbox" name="consent" required />
+            <span>I understand this form is for initial discovery and I will not submit passwords, controlled data, protected health information, or other sensitive information.</span>
+          </label>
+
+          <button type="submit" class="button primary form-submit">Prepare Assessment Request</button>
+          <p class="form-help">Submitting prepares a structured email to BNS Innovation using your device's email application.</p>
+        </form>
       </div>
     </section>
   </main>
@@ -165,5 +255,36 @@
       <span>Engineering Operational Resilience Through Innovation by Applied AI & Cybersecurity</span>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('bottleneck-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const data = new FormData(this);
+      const subject = 'BNS Bottleneck Assessment Request - ' + (data.get('organization') || 'New Inquiry');
+      const body = [
+        'BNS BOTTLENECK ASSESSMENT REQUEST',
+        '',
+        'Name: ' + (data.get('name') || ''),
+        'Work email: ' + (data.get('email') || ''),
+        'Organization: ' + (data.get('organization') || ''),
+        'Organization type: ' + (data.get('organization_type') || ''),
+        'Industry / sector: ' + (data.get('industry') || ''),
+        '',
+        'BOTTLENECK',
+        data.get('bottleneck') || '',
+        '',
+        'Primary impact: ' + (data.get('impact') || ''),
+        'Priority: ' + (data.get('priority') || ''),
+        '',
+        'WHAT HAS BEEN TRIED',
+        data.get('attempts') || '',
+        '',
+        'DESIRED OUTCOME',
+        data.get('outcome') || ''
+      ].join('\n');
+
+      window.location.href = 'mailto:info@bnsinnovation.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+  </script>
 </body>
 </html>
