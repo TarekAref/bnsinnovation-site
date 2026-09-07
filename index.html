@@ -160,7 +160,13 @@
           </div>
         </div>
 
-        <form id="bottleneck-form" class="assessment-form">
+        <form id="bottleneck-form" class="assessment-form" action="https://formsubmit.co/info@bnsinnovation.com" method="POST">
+          <input type="hidden" name="_subject" value="New BNS Bottleneck Assessment Request" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_next" value="https://bnsinnovation.com/thank-you.html" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
           <div class="form-grid two-col">
             <label>
               Name *
@@ -238,12 +244,12 @@
           </label>
 
           <label class="consent-row">
-            <input type="checkbox" name="consent" required />
+            <input type="checkbox" name="consent" value="Confirmed" required />
             <span>I understand this form is for initial discovery and I will not submit passwords, controlled data, protected health information, or other sensitive information.</span>
           </label>
 
-          <button type="submit" class="button primary form-submit">Prepare Assessment Request</button>
-          <p class="form-help">Submitting prepares a structured email to BNS Innovation using your device's email application.</p>
+          <button type="submit" class="button primary form-submit">Submit Assessment Request</button>
+          <p class="form-help">Initial inquiries are delivered to BNS Innovation through a hosted form service. Do not submit confidential, controlled, regulated, or sensitive information.</p>
         </form>
       </div>
     </section>
@@ -255,36 +261,5 @@
       <span>Engineering Operational Resilience Through Innovation by Applied AI & Cybersecurity</span>
     </div>
   </footer>
-
-  <script>
-    document.getElementById('bottleneck-form').addEventListener('submit', function (event) {
-      event.preventDefault();
-      const data = new FormData(this);
-      const subject = 'BNS Bottleneck Assessment Request - ' + (data.get('organization') || 'New Inquiry');
-      const body = [
-        'BNS BOTTLENECK ASSESSMENT REQUEST',
-        '',
-        'Name: ' + (data.get('name') || ''),
-        'Work email: ' + (data.get('email') || ''),
-        'Organization: ' + (data.get('organization') || ''),
-        'Organization type: ' + (data.get('organization_type') || ''),
-        'Industry / sector: ' + (data.get('industry') || ''),
-        '',
-        'BOTTLENECK',
-        data.get('bottleneck') || '',
-        '',
-        'Primary impact: ' + (data.get('impact') || ''),
-        'Priority: ' + (data.get('priority') || ''),
-        '',
-        'WHAT HAS BEEN TRIED',
-        data.get('attempts') || '',
-        '',
-        'DESIRED OUTCOME',
-        data.get('outcome') || ''
-      ].join('\n');
-
-      window.location.href = 'mailto:info@bnsinnovation.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    });
-  </script>
 </body>
 </html>
