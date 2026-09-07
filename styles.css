@@ -164,6 +164,7 @@ h3 {
   border-radius: 12px;
   font-weight: 700;
   border: 1px solid var(--line);
+  cursor: pointer;
 }
 
 .button.primary {
@@ -193,7 +194,8 @@ h3 {
 
 .hero-card,
 .assistant-panel,
-.contact-box {
+.contact-box,
+.assessment-form {
   background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
   border: 1px solid var(--line);
   border-radius: 24px;
@@ -267,6 +269,108 @@ h3 {
   gap: 32px;
 }
 
+.assessment-wrap {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.assessment-intro {
+  position: sticky;
+  top: 104px;
+}
+
+.assessment-notes {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  margin-top: 1.6rem;
+}
+
+.assessment-notes span {
+  color: var(--muted);
+  border-left: 2px solid var(--accent);
+  padding-left: .8rem;
+  font-size: .92rem;
+}
+
+.assessment-form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.form-grid.two-col {
+  grid-template-columns: 1fr 1fr;
+}
+
+.assessment-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  font-size: .92rem;
+}
+
+.assessment-form input,
+.assessment-form select,
+.assessment-form textarea {
+  width: 100%;
+  padding: .9rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #09182a;
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.assessment-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.assessment-form input::placeholder,
+.assessment-form textarea::placeholder {
+  color: #75869b;
+}
+
+.assessment-form input:focus,
+.assessment-form select:focus,
+.assessment-form textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(57,208,255,.10);
+}
+
+.consent-row {
+  grid-template-columns: auto 1fr !important;
+  align-items: start;
+  gap: 10px !important;
+  color: var(--muted);
+  font-weight: 500 !important;
+  line-height: 1.45;
+}
+
+.consent-row input {
+  width: auto;
+  margin-top: .25rem;
+}
+
+.form-submit {
+  width: 100%;
+  border: 0;
+  font-size: 1rem;
+}
+
+.form-help {
+  margin: -6px 0 0;
+  font-size: .82rem;
+}
+
 .footer {
   border-top: 1px solid var(--line);
   padding: 24px 0;
@@ -287,9 +391,14 @@ h3 {
 
   .hero-grid,
   .split,
-  .contact-box {
+  .contact-box,
+  .assessment-wrap {
     grid-template-columns: 1fr;
     gap: 36px;
+  }
+
+  .assessment-intro {
+    position: static;
   }
 
   .cards {
@@ -307,8 +416,13 @@ h3 {
   }
 
   .cards,
-  .method-grid {
+  .method-grid,
+  .form-grid.two-col {
     grid-template-columns: 1fr;
+  }
+
+  .assessment-form {
+    padding: 20px;
   }
 
   .footer-wrap {
