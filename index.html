@@ -14,8 +14,11 @@
         <span class="brand-mark">BNS</span>
         <span class="brand-text">Innovation</span>
       </a>
-      <nav class="nav">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+      <nav id="primary-nav" class="nav" aria-label="Main navigation">
         <a href="#services">Services</a>
+        <a href="#pmo">PMO Support</a>
+        <a href="#academy">BNS Academy</a>
         <a href="#method">Method</a>
         <a href="#assistant">BNS Assistant</a>
         <a href="#labs">BNS Labs R&amp;D</a>
@@ -29,7 +32,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Engineering Operational Resilience Through Innovation by Applied AI & Cybersecurity</p>
+          <p class="eyebrow">Advancing Operational Resilience Through Applied AI, Cybersecurity &amp; Disciplined Execution</p>
           <h1>Identify what is slowing progress. Build what removes it.</h1>
           <p class="hero-copy">
             BNS Innovation helps businesses and organizations uncover costly operational bottlenecks
@@ -86,6 +89,58 @@
             <h3>Solution Prototyping</h3>
             <p>Convert a validated bottleneck into a lean product, service, automation, or implementation plan that can be tested quickly.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pmo" class="section alt" aria-labelledby="pmo-title">
+      <div class="container">
+        <p class="section-kicker">Project Coordination &amp; Delivery</p>
+        <h2 id="pmo-title">Project Management Office (PMO) Support</h2>
+        <p class="section-intro">Bring structure, visibility, and accountability to active projects. BNS helps teams clarify priorities, coordinate responsibilities, and keep decisions moving from planning through delivery.</p>
+        <div class="cards">
+          <article class="service-card">
+            <h3>Planning &amp; Coordination</h3>
+            <p>Organize milestones, task owners, schedules, and dependencies into a shared plan your team can follow.</p>
+          </article>
+          <article class="service-card">
+            <h3>Progress &amp; Risk Visibility</h3>
+            <p>Keep status reports, action logs, and risk registers current so leaders can see delays and decide what needs attention.</p>
+          </article>
+          <article class="service-card">
+            <h3>Documentation &amp; Follow-through</h3>
+            <p>Capture decisions, coordinate stakeholder updates, and track commitments through to completion.</p>
+          </article>
+        </div>
+        <p class="service-note">Start with one defined project. We agree on the scope, reporting cadence, and deliverables before work begins.</p>
+        <div class="contact-actions">
+          <a href="#contact" class="button primary" data-service="pmo">Discuss Your Project</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="academy" class="section" aria-labelledby="academy-title">
+      <div class="container">
+        <p class="section-kicker">BNS Academy</p>
+        <h2 id="academy-title">Practical knowledge. Stronger teams.</h2>
+        <p class="section-intro">BNS Academy is developing practical learning experiences that connect technology knowledge with everyday business needs. Explore workshops designed to help teams work confidently with AI, recognize security risks, and adopt clearer processes.</p>
+        <div class="cards">
+          <article class="service-card">
+            <h3>Applied AI at Work</h3>
+            <p>Explore useful AI workflows, effective prompts, and ways to review outputs while protecting business information.</p>
+          </article>
+          <article class="service-card">
+            <h3>Cybersecurity Awareness</h3>
+            <p>Build everyday habits for recognizing phishing, protecting accounts, and handling information responsibly.</p>
+          </article>
+          <article class="service-card">
+            <h3>Workflow &amp; Team Practices</h3>
+            <p>Learn how to document repeatable tasks, clarify responsibilities, and improve handoffs across a team.</p>
+          </article>
+        </div>
+        <p class="service-note">Share your team's learning needs to discuss workshop options and availability.</p>
+        <div class="contact-actions">
+          <a href="#contact" class="button primary" data-service="academy">Explore Team Training</a>
         </div>
       </div>
     </section>
@@ -222,13 +277,26 @@
           </div>
 
           <label>
+            Service interest
+            <select name="service_interest" id="service-interest">
+              <option value="">Select one</option>
+              <option value="assessment">Bottleneck assessment</option>
+              <option value="automation">AI &amp; workflow automation</option>
+              <option value="cybersecurity">Cybersecurity readiness</option>
+              <option value="pmo">Project coordination &amp; PMO support</option>
+              <option value="academy">BNS Academy / team training</option>
+              <option value="other">Other / not sure yet</option>
+            </select>
+          </label>
+
+          <label>
             Industry or sector
             <input type="text" name="industry" placeholder="e.g., manufacturing, IT, public sector, logistics" />
           </label>
 
           <label>
-            Describe the bottleneck *
-            <textarea name="bottleneck" rows="6" required placeholder="What is happening, where does the process slow down or fail, and whom does it affect?"></textarea>
+            Describe your challenge or learning needs *
+            <textarea name="bottleneck" rows="6" required placeholder="Tell us about the bottleneck, project, or training needs you would like to discuss."></textarea>
           </label>
 
           <div class="form-grid two-col">
@@ -283,8 +351,36 @@
   <footer class="footer">
     <div class="container footer-wrap">
       <span>© 2026 BNS Innovation LLC</span>
-      <span>Engineering Operational Resilience Through Innovation by Applied AI & Cybersecurity</span>
+      <span>Advancing Operational Resilience Through Applied AI, Cybersecurity &amp; Disciplined Execution</span>
     </div>
   </footer>
+  <script>
+    const header = document.querySelector('.site-header');
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('#primary-nav');
+    header.classList.add('nav-ready');
+
+    function closeMenu() {
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', () => {
+      toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
+    });
+    nav.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu();
+    });
+    header.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        toggle.focus();
+      }
+    });
+    document.querySelectorAll('[data-service]').forEach((link) => {
+      link.addEventListener('click', () => {
+        document.querySelector('#service-interest').value = link.dataset.service;
+      });
+    });
+  </script>
 </body>
 </html>

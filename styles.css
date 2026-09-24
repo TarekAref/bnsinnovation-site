@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
 }
 
 body {
@@ -50,6 +51,7 @@ a {
   align-items: center;
   justify-content: space-between;
   min-height: 72px;
+  gap: 20px;
 }
 
 .brand {
@@ -58,6 +60,7 @@ a {
   gap: .65rem;
   font-weight: 800;
   letter-spacing: -.02em;
+  flex-shrink: 0;
 }
 
 .brand-mark {
@@ -78,9 +81,30 @@ a {
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 1rem;
   color: var(--muted);
-  font-size: .95rem;
+  font-size: .9rem;
+}
+
+.nav a {
+  white-space: nowrap;
+}
+
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .65rem 1rem;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
 
 .nav a:hover {
@@ -222,6 +246,16 @@ h3 {
 
 .section {
   padding: 88px 0;
+}
+
+.section-intro {
+  max-width: 800px;
+  font-size: 1.1rem;
+}
+
+.service-note {
+  margin-top: 1.5rem;
+  max-width: 800px;
 }
 
 .alt {
@@ -384,10 +418,42 @@ h3 {
   gap: 24px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+  .nav-wrap {
+    flex-wrap: wrap;
+    gap: 0;
+    padding: 12px 0;
+  }
+
+  .nav-ready .nav-toggle {
+    display: inline-flex;
+  }
+
   .nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding-top: 12px;
+  }
+
+  .nav a {
+    padding: .6rem .5rem;
+    white-space: normal;
+  }
+
+  .nav-ready .nav-toggle[aria-expanded="false"] + .nav {
     display: none;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (max-width: 900px) {
 
   .hero-grid,
   .split,
