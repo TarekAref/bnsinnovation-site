@@ -17,7 +17,7 @@
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
       <nav id="primary-nav" class="nav" aria-label="Main navigation">
         <a href="#services">Services</a>
-        <a href="#pmo">PMO Support</a>
+        <a href="pmo/">PMO Services</a>
         <a href="#academy">BNS Academy</a>
         <a href="#method">Method</a>
         <a href="#assistant">BNS Assistant</a>
@@ -95,26 +95,27 @@
 
     <section id="pmo" class="section alt" aria-labelledby="pmo-title">
       <div class="container">
-        <p class="section-kicker">Project Coordination &amp; Delivery</p>
-        <h2 id="pmo-title">Project Management Office (PMO) Support</h2>
-        <p class="section-intro">Bring structure, visibility, and accountability to active projects. BNS helps teams clarify priorities, coordinate responsibilities, and keep decisions moving from planning through delivery.</p>
+        <p class="section-kicker">BNS PMO — a service of BNS Innovation</p>
+        <h2 id="pmo-title">PMO Setup &amp; Project Controls for Construction and Engineering</h2>
+        <p class="section-intro">BNS Innovation helps construction and engineering firms establish clear project responsibilities, consistent reporting, and visibility into schedules, costs, resources, and outstanding decisions.</p>
         <div class="cards">
           <article class="service-card">
-            <h3>Planning &amp; Coordination</h3>
-            <p>Organize milestones, task owners, schedules, and dependencies into a shared plan your team can follow.</p>
+            <h3>Assess your current processes</h3>
+            <p>Identify reporting gaps and unclear responsibilities. Receive a prioritized roadmap for your Project Management Office (PMO).</p>
           </article>
           <article class="service-card">
-            <h3>Progress &amp; Risk Visibility</h3>
-            <p>Keep status reports, action logs, and risk registers current so leaders can see delays and decide what needs attention.</p>
+            <h3>Set up project controls</h3>
+            <p>Start with one pilot project or establish governance and reporting across an agreed business unit.</p>
           </article>
           <article class="service-card">
-            <h3>Documentation &amp; Follow-through</h3>
-            <p>Capture decisions, coordinate stakeholder updates, and track commitments through to completion.</p>
+            <h3>Keep reporting consistent</h3>
+            <p>Choose ongoing support for reports, action follow-up, and management reviews within a defined monthly capacity.</p>
           </article>
         </div>
-        <p class="service-note">Start with one defined project. We agree on the scope, reporting cadence, and deliverables before work begins.</p>
+        <p class="service-note">For North Carolina contractors, construction management firms, and engineering consultancies. Assessments are $1,500; project controls start at $4,500; PMO setup starts at $9,500; monthly support starts at $2,000. All prices in USD. Final scope and fees are confirmed in a written proposal.</p>
         <div class="contact-actions">
-          <a href="#contact" class="button primary" data-service="pmo">Discuss Your Project</a>
+          <a href="pmo/" class="button primary">Explore PMO Services &amp; Pricing</a>
+          <a href="pmo/?package=discovery#inquiry" class="button secondary">Schedule a PMO Discovery Call</a>
         </div>
       </div>
     </section>
@@ -283,7 +284,7 @@
               <option value="assessment">Bottleneck assessment</option>
               <option value="automation">AI &amp; workflow automation</option>
               <option value="cybersecurity">Cybersecurity readiness</option>
-              <option value="pmo">Project coordination &amp; PMO support</option>
+              <option value="pmo">PMO setup &amp; project controls</option>
               <option value="academy">BNS Academy / team training</option>
               <option value="other">Other / not sure yet</option>
             </select>
@@ -354,33 +355,6 @@
       <span>Engineering Breakthroughs from Bottlenecks Through Intelligent, Secure, and Resilient Systems.</span>
     </div>
   </footer>
-  <script>
-    const header = document.querySelector('.site-header');
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('#primary-nav');
-    header.classList.add('nav-ready');
-
-    function closeMenu() {
-      toggle.setAttribute('aria-expanded', 'false');
-    }
-
-    toggle.addEventListener('click', () => {
-      toggle.setAttribute('aria-expanded', String(toggle.getAttribute('aria-expanded') !== 'true'));
-    });
-    nav.addEventListener('click', (event) => {
-      if (event.target.closest('a')) closeMenu();
-    });
-    header.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-        closeMenu();
-        toggle.focus();
-      }
-    });
-    document.querySelectorAll('[data-service]').forEach((link) => {
-      link.addEventListener('click', () => {
-        document.querySelector('#service-interest').value = link.dataset.service;
-      });
-    });
-  </script>
+  <script src="assets/site.js" defer></script>
 </body>
 </html>

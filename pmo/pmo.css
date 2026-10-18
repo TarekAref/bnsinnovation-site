@@ -1,0 +1,87 @@
+/* PMO additions reuse the existing BNS color, typography, and control styles. */
+.pmo-page .nav [aria-current="page"] { color: var(--accent-2); }
+.skip-link { position: fixed; left: 1rem; top: -6rem; z-index: 50; padding: .75rem 1rem; background: var(--accent-2); color: var(--bg); border-radius: 8px; }
+.skip-link:focus { top: 1rem; }
+.pmo-hero { padding: 84px 0 44px; }
+.pmo-hero h1 { max-width: 1000px; font-size: clamp(2.5rem, 5.3vw, 4.6rem); line-height: 1.08; }
+.pmo-hero .hero-copy { max-width: 790px; }
+.hero-note { color: var(--muted); font-size: .9rem; max-width: 650px; }
+.audience-line { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
+.audience-line span { color: var(--accent-2); font-size: .9rem; font-weight: 700; }
+.audience-line p { margin: 0; color: var(--muted); font-size: .9rem; }
+.challenge-list { margin: 40px 0 0; }
+.challenge-list > div { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 22px 0; border-top: 1px solid var(--line); }
+.challenge-list dt { font-weight: 700; font-size: 1.13rem; }
+.challenge-list dd { margin: 0; color: var(--muted); }
+.package-row { display: grid; grid-template-columns: .92fr 1.08fr; gap: 64px; border-top: 1px solid var(--line); padding: 48px 0; }
+.package-row:first-of-type { margin-top: 40px; }
+.package-number { color: var(--accent-2) !important; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; font-size: .76rem; margin: 0 0 14px; }
+.package-summary h3 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); max-width: 420px; margin-bottom: 20px; }
+.package-price { font-size: clamp(2.1rem, 3.6vw, 2.8rem); font-weight: 750; color: var(--text) !important; letter-spacing: -.03em; line-height: 1.25; margin: 0 0 12px; }
+.package-price span { font-size: 1rem; font-weight: 500; letter-spacing: 0; }
+.package-fit { max-width: 390px; }
+.package-summary .button { margin-top: 12px; text-align: center; }
+.package-details h4 { font-size: 1rem; margin: 0 0 12px; }
+.package-details ul { padding-left: 1.2rem; margin: 0; color: var(--muted); }
+.package-details li { padding-left: 6px; margin: 8px 0; }
+.package-details li::marker { color: var(--accent-2); }
+.package-timing { border-top: 1px solid var(--line); padding-top: 18px; margin-top: 24px; font-size: .92rem; }
+.package-timing strong { color: var(--text); }
+.support-options { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.support-options > div + div { border-left: 1px solid var(--line); padding-left: 26px; }
+.support-options h4 { color: var(--accent-2); }
+.support-price { color: var(--text) !important; font-size: 1.3rem; font-weight: 700; margin: 0; }
+.package-guidance { border-left: 3px solid var(--accent-2); padding: 2px 0 2px 24px; max-width: 900px; }
+.package-guidance strong { color: var(--text); }
+.text-link { color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
+.text-link:hover { color: var(--accent-2); }
+.experience-layout { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; }
+.experience-layout h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); }
+.experience-stat { color: var(--accent-2) !important; font-weight: 750; font-size: 4.5rem; line-height: 1; margin: 40px 0 0; }
+.experience-stat span { display: block; color: var(--muted); font-size: .95rem; font-weight: 400; max-width: 230px; line-height: 1.5; margin-top: 12px; }
+.section .experience-copy { color: var(--text); font-size: 1.15rem; margin-top: 0; }
+.attribution { border-top: 1px solid var(--line); padding-top: 20px; font-size: .9rem; }
+.engagement-steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.engagement-steps li { border-top: 1px solid var(--line); padding-top: 20px; }
+.step-number { display: block; color: var(--accent-2); font-weight: 700; margin-bottom: 20px; }
+.engagement-steps h3 { line-height: 1.35; }
+.faq-layout { display: grid; grid-template-columns: .65fr 1.35fr; gap: 64px; }
+.faq-list details { border-top: 1px solid var(--line); }
+.faq-list details:last-child { border-bottom: 1px solid var(--line); }
+.faq-list summary { padding: 20px 32px 20px 0; cursor: pointer; font-weight: 650; line-height: 1.5; }
+.faq-list summary::marker { color: var(--accent-2); }
+.faq-list details > div { padding: 0 24px 14px 18px; }
+.faq-list p { margin-top: 0; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.field-hint { color: var(--muted); font-weight: 400; font-size: .82rem; }
+.honeypot { display: none; }
+.pmo-page [hidden] { display: none !important; }
+.pmo-page .assessment-form { min-width: 0; }
+.pmo-page .assessment-form input, .pmo-page .assessment-form select, .pmo-page .assessment-form textarea { min-width: 0; }
+.pmo-page .form-grid > label { min-width: 0; }
+.pmo-page .form-grid { align-items: start; }
+.pmo-page .assessment-form .form-help { margin: 0; }
+.pmo-page .assessment-form select { text-overflow: ellipsis; }
+.pmo-page .assessment-form input::placeholder, .pmo-page .assessment-form textarea::placeholder { color: #a9b8cc; }
+.pmo-page .form-submit { font: inherit; font-weight: 700; }
+.pmo-page .footer a { text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 900px) {
+  .package-row, .experience-layout, .faq-layout { grid-template-columns: 1fr; gap: 28px; }
+  .package-summary h3, .package-fit { max-width: none; }
+  .engagement-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .audience-line { flex-direction: column; gap: 8px; }
+  .experience-stat { font-size: 3.5rem; margin-top: 24px; }
+}
+@media (max-width: 620px) {
+  .pmo-page .section { padding: 56px 0; }
+  .pmo-hero { padding-top: 56px; }
+  .pmo-page .hero-actions { flex-direction: column; align-items: stretch; }
+  .pmo-page .hero-actions .button { text-align: center; }
+  .challenge-list > div { grid-template-columns: 1fr; gap: 10px; }
+  .package-row { padding: 32px 0; }
+  .package-summary .button { width: 100%; }
+  .support-options, .engagement-steps { grid-template-columns: 1fr; }
+  .support-options > div + div { padding: 24px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+  .package-guidance { padding-left: 16px; }
+  .pmo-page .assessment-form input, .pmo-page .assessment-form select, .pmo-page .assessment-form textarea { font-size: 1rem; }
+}
