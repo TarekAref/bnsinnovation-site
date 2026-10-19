@@ -65,12 +65,46 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 .pmo-page .assessment-form input::placeholder, .pmo-page .assessment-form textarea::placeholder { color: #a9b8cc; }
 .pmo-page .form-submit { font: inherit; font-weight: 700; }
 .pmo-page .footer a { text-decoration: underline; text-underline-offset: 4px; }
+.package-done { margin-top: 20px; font-size: .95rem; }
+.package-done strong { color: var(--text); }
+.package-done + .package-timing { margin-top: 16px; }
+.sample-report { margin: 40px 0 0; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.sample-tag { display: inline-block; margin: 0 0 18px; padding: 4px 12px; border: 1px dashed var(--accent-2); border-radius: 999px; color: var(--accent-2) !important; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.sample-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 16px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.sample-head h3 { margin: 0; }
+.sample-head p { margin: 0; font-size: .92rem; }
+.sample-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin: 20px 0; }
+.sample-summary > div { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.sample-summary dt { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+.sample-summary dd { margin: 6px 0 0; color: var(--muted); font-size: .92rem; }
+.sample-summary dd strong { display: block; color: var(--text); font-size: 1.1rem; }
+.sample-table-wrap { overflow-x: auto; }
+.sample-table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sample-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: .9rem; }
+.sample-table caption { text-align: left; font-weight: 700; padding: 0 0 10px; color: var(--text); }
+.sample-table th, .sample-table td { text-align: left; padding: 10px 14px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+.sample-table th { color: var(--muted); font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; }
+.sample-table td { color: var(--muted); }
+.sample-table td:first-child { color: var(--text); }
+.sample-report figcaption { margin-top: 18px; font-size: .85rem; color: var(--muted); }
+.needs-list { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 48px; }
+.needs-list li { border-top: 1px solid var(--line); padding: 16px 0; color: var(--muted); }
+.needs-list strong { color: var(--text); }
+.thanks { max-width: 760px; padding-top: 8vh; }
+.thanks h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); }
+.thanks .section-kicker { margin-top: 3rem; }
+.thanks-heading { font-size: 1.4rem; margin: 2rem 0 0; }
+.thanks-steps { margin: 24px 0; padding-left: 1.2rem; color: var(--muted); }
+.thanks-steps li { margin: 10px 0; padding-left: 6px; }
+.thanks-steps li::marker { color: var(--accent-2); font-weight: 700; }
 @media (max-width: 900px) {
   .package-row, .experience-layout, .faq-layout { grid-template-columns: 1fr; gap: 28px; }
   .package-summary h3, .package-fit { max-width: none; }
   .engagement-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .audience-line { flex-direction: column; gap: 8px; }
   .experience-stat { font-size: 3.5rem; margin-top: 24px; }
+  .sample-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .needs-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
   .pmo-page .section { padding: 56px 0; }
@@ -83,5 +117,7 @@ summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
   .support-options, .engagement-steps { grid-template-columns: 1fr; }
   .support-options > div + div { padding: 24px 0 0; border-left: 0; border-top: 1px solid var(--line); }
   .package-guidance { padding-left: 16px; }
+  .sample-report { padding: 20px; }
+  .sample-summary { grid-template-columns: 1fr; }
   .pmo-page .assessment-form input, .pmo-page .assessment-form select, .pmo-page .assessment-form textarea { font-size: 1rem; }
 }

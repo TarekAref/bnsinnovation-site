@@ -126,3 +126,33 @@ test('native form keeps the existing recipient, verification, and PMO confirmati
   assert.match(html, /name="_next" value="https:\/\/bnsinnovation.com\/pmo\/thank-you.html"/);
   assert.ok(fs.existsSync(path.join(root, 'pmo/thank-you.html')));
 });
+test('calls to action say "Request", because the form does not book a time', () => {
+  assert.doesNotMatch(html, /Schedule a PMO Discovery Call/);
+  assert.match(html, />Request a PMO Discovery Call</);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), /Schedule a PMO Discovery Call/);
+});
+test('only the fields needed for a first reply are required', () => {
+  const form = html.match(/<form id="pmo-inquiry-form"[\s\S]*?<\/form>/)[0];
+  const required = [...form.matchAll(/<(?:input|select|textarea)\b[^>]*\brequired\b[^>]*>/g)]
+    .map((m) => (m[0].match(/name="([^"]+)"/) || [])[1]).sort();
+  assert.deepEqual(required, ['challenge', 'consent', 'email', 'name', 'organization']);
+});
+test('every in-page anchor on the PMO page has a target', () => {
+  const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
+  for (const m of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(m[1]), `missing #${m[1]}`);
+  for (const m of html.matchAll(/href="\?package=[^#"]*#([^"]+)"/g)) assert.ok(ids.has(m[1]), `missing #${m[1]}`);
+});
+test('the sample report is labelled fictional and no prior-employer material is claimed', () => {
+  assert.match(html, /Illustrative sample · fictional project and data/);
+  assert.match(html, /The project, names, and figures are fictional/);
+  assert.match(html, /no prior employer’s records or confidential project information are shown here/);
+});
+test('the page does not add terms the owner has not set', () => {
+  assert.doesNotMatch(html, /\bguarantees?\b/i);
+  assert.doesNotMatch(html, /(within|in) (one|two|1|2|24|48) (business )?(day|hour)/i);
+  assert.doesNotMatch(html, /(money-back|credited toward|rollover|roll over)/i);
+});
+test('the privacy note names the third-party form service', () => {
+  assert.match(html, /id="privacy-note"[^>]*>[\s\S]*FormSubmit/);
+  assert.match(html, /aria-describedby="inquiry-help privacy-note"/);
+});
