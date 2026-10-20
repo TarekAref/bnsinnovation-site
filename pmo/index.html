@@ -22,6 +22,9 @@
     .market-card h3{font-size:clamp(1.4rem,2.5vw,2rem);margin:12px 0}
     .market-card p{line-height:1.6;margin:8px 0}
     .market-card .text-link{margin-top:20px;color:#6df5c2}
+    .market-regions{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:12px 0;padding:0}
+    .market-regions li{padding:6px 10px;border:1px solid #557985;border-radius:8px;font-size:.9rem;line-height:1.5}
+    .market-regions span{font-size:.85em}
     .market-card:hover{border-color:#6df5c2}
     .market-card:focus-visible{outline:3px solid #6df5c2;outline-offset:5px}
     @media(max-width:640px){.market-grid{grid-template-columns:1fr;max-width:440px}.market-card{aspect-ratio:auto;min-height:320px}}
@@ -69,7 +72,8 @@
           <a class="market-card" href="#inquiry" data-market="United States">
             <span class="section-kicker">Nationwide</span>
             <h3>U.S. Market</h3>
-            <p><strong>All 50 states</strong></p>
+            <p><strong>All 50 states, organized by region</strong></p>
+            <ul class="market-regions" aria-label="U.S. service regions"><li>Northeast</li><li>Southeast</li><li>Midwest</li><li>Southwest</li><li>West <span>(including Alaska &amp; Hawaii)</span></li></ul>
             <p>Project reporting, clear responsibilities, and coordination for construction and engineering teams across the United States.</p>
             <span class="text-link">Discuss your U.S. projects →</span>
           </a>
@@ -314,7 +318,7 @@
             <label for="pmo-name">Name *<input id="pmo-name" type="text" name="name" autocomplete="name" maxlength="150" required /></label>
             <label for="pmo-email">Work email *<input id="pmo-email" type="email" name="email" autocomplete="email" maxlength="254" required /></label>
           </div>
-          <label for="pmo-market">Project market (optional)<select id="pmo-market" name="project_market"><option value="">Select your market</option><option value="United States">United States — all 50 states</option><option value="International">International — Gulf region, Middle East &amp; Europe</option><option value="Multiple markets">Multiple markets</option></select></label>
+          <label for="pmo-market">Project market / region (optional)<select id="pmo-market" name="project_market"><option value="">Select your market or region</option><optgroup label="U.S. Market"><option value="United States">United States — nationwide / multiple regions</option><option value="United States - Northeast">Northeast</option><option value="United States - Southeast">Southeast</option><option value="United States - Midwest">Midwest</option><option value="United States - Southwest">Southwest</option><option value="United States - West">West — including Alaska &amp; Hawaii</option></optgroup><optgroup label="International Markets"><option value="International">International — select during discovery</option><option value="International - Gulf region">Gulf region</option><option value="International - Middle East">Middle East</option><option value="International - Europe">Europe</option></optgroup><option value="Multiple markets">U.S. and international markets</option></select></label>
           <label for="pmo-company">Company *<input id="pmo-company" type="text" name="organization" autocomplete="organization" maxlength="200" required /></label>
           <label for="pmo-challenge">Main project-management challenge *<textarea id="pmo-challenge" name="challenge" rows="5" maxlength="4000" placeholder="For example: inconsistent reporting across projects, unclear action owners, or difficulty tracking outstanding submittals and RFIs." required></textarea></label>
           <label for="pmo-package">Package of interest<select id="pmo-package" name="package_interest">
