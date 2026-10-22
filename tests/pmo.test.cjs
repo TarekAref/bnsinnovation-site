@@ -144,7 +144,8 @@ test('every in-page anchor on the PMO page has a target', () => {
 });
 test('the sample report is removed and prior-employer records remain private', () => {
   assert.doesNotMatch(html, /id="sample"|sample-report|Illustrative sample/);
-  assert.match(html, /no prior employer’s records or confidential project information are shown here/);
+  assert.match(html, /expertise developed through previous industry roles/);
+  assert.match(html, /Projects referenced reflect those prior roles, with employer and client confidentiality respected/);
 });
 test('the page does not add terms the owner has not set', () => {
   assert.doesNotMatch(html, /\bguarantees?\b/i);
