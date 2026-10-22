@@ -128,7 +128,7 @@ test('native form keeps the existing recipient, verification, and PMO confirmati
 });
 test('calls to action say "Request", because the form does not book a time', () => {
   assert.doesNotMatch(html, /Schedule a PMO Discovery Call/);
-  assert.match(html, />Request a PMO Discovery Call</);
+  assert.match(html, />Request a PMO Quote</);
   assert.doesNotMatch(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), /Schedule a PMO Discovery Call/);
 });
 test('only the fields needed for a first reply are required', () => {
@@ -142,9 +142,8 @@ test('every in-page anchor on the PMO page has a target', () => {
   for (const m of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(m[1]), `missing #${m[1]}`);
   for (const m of html.matchAll(/href="\?package=[^#"]*#([^"]+)"/g)) assert.ok(ids.has(m[1]), `missing #${m[1]}`);
 });
-test('the sample report is labelled fictional and no prior-employer material is claimed', () => {
-  assert.match(html, /Illustrative sample · fictional project and data/);
-  assert.match(html, /The project, names, and figures are fictional/);
+test('the sample report is removed and prior-employer records remain private', () => {
+  assert.doesNotMatch(html, /id="sample"|sample-report|Illustrative sample/);
   assert.match(html, /no prior employer’s records or confidential project information are shown here/);
 });
 test('the page does not add terms the owner has not set', () => {
